@@ -1,0 +1,29 @@
+body{
+  background-color: #374C5E;
+  color: white;
+}
+.map{
+  width: 250px;
+  height: 150px;
+  background-color: #03BF94;
+  float: left;
+  margin: 10px;
+  text-align: center;
+  line-height: 150px;
+  cursor: pointer;
+  position: relative;
+}
+.map span{
+  z-index: 110;
+  position: relative;
+}
+.overlay{
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 100;
+  opacity: 0;
+}
