@@ -3,6 +3,16 @@ console.log("Laoded!");
 
 socket.on('connect', function(){
   console.log("Connected!");
+  var params = jQuery.deparam(window.location.search);
+  console.log(params);
+  socket.emit('join', params, function(err){
+    if(err){
+      alert(err);
+      window.location.href = "/";
+    } else{
+      console.log("No errors.")
+    }
+  });
 });
 
 socket.on('newMapBan', function(ban){
@@ -28,6 +38,10 @@ mapBox.on('click', function(){
     $('.map').css('cursor', 'default')
     $('.overlay').css('opacity', 0.30)
   }
+});
+
+socket.on('downloadData', function(roomData){
+  console.log("AKCJA!");
 })
 
 
