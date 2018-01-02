@@ -69,6 +69,16 @@ io.on('connection', (socket)=>{
     });
   });
 
+  socket.on('updateBanList', (mapid)=>{
+    var user = users.getUser(socket.id);
+    var bans = users.removeRoomBan(user.room, mapid);
+    console.log(bans.length);
+    if (bans.length==1){
+      var lastMap = bans[0];
+      io.to(user.room).emit('mapsChosen', lastMap);
+    }
+  })
+
   socket.on('unlockBan', ()=>{
     var user = users.getUser(socket.id);
     var lockedFlag = false;

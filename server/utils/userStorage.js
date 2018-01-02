@@ -43,14 +43,36 @@ class Users{
     var room = {
       roomid,
       roomData: [
-        '<div id="mirage" class="map"><span>Mirage</span><div class="overlay"></div></div>',
-        '<div id="dust2" class="map"><span>Dust2</span><div class="overlay"></div></div>',
-        '<div id="inferno" class="map"><span>inferno</span><div class="overlay"></div></div>',
-        '<div id="cache" class="map"><span>Cache</span><div class="overlay"></div></div>',
-        '<div id="cobble" class="map"><span>Cobble</span><div class="overlay"></div></div>',
-        '<div id="nuke" class="map"><span>Nuke</span><div class="overlay"></div></div>',
-        '<div id="train" class="map"><span>Train</span><div class="overlay"></div></div>'
+        '<div id="mirage" class="map" mapid="1"><span>Mirage</span><div class="overlay"></div></div>',
+        '<div id="dust2" class="map" mapid="2"><span>Dust2</span><div class="overlay"></div></div>',
+        '<div id="inferno" class="map" mapid="3"><span>inferno</span><div class="overlay"></div></div>',
+        '<div id="cache" class="map" mapid="4"><span>Cache</span><div class="overlay"></div></div>',
+        '<div id="cobble" class="map" mapid="5"><span>Cobble</span><div class="overlay"></div></div>',
+        '<div id="nuke" class="map" mapid="6"><span>Nuke</span><div class="overlay"></div></div>',
+        '<div id="train" class="map" mapid="7"><span>Train</span><div class="overlay"></div></div>'
       ],
+      bans: [{
+        mapid: 1,
+        name: 'Mirage'
+      },{
+        mapid: 2,
+        name: 'Dust2'
+      },{
+        mapid: 3,
+        name: 'Inferno'
+      },{
+        mapid: 4,
+        name: 'Cache'
+      },{
+        mapid: 5,
+        name: 'Cobble'
+      },{
+        mapid: 6,
+        name: 'Nuke'
+      },{
+        mapid: 7,
+        name: 'Train'
+      },],
       roomUsers: []
     }
     this.rooms.push(room);
@@ -112,6 +134,22 @@ class Users{
     }
     return room.roomData;
 
+  }
+  removeRoomBan(roomid, newBan){
+    var room = this.getRoom(roomid);
+    if(room){
+      this.rooms = this.rooms.filter((room)=>{
+        return room.roomid != roomid;
+      });
+      room.bans = room.bans.filter((map)=>{
+        return map.mapid != newBan;
+      })
+      console.log('ROOMBAN: Updated!', room.bans.length)
+      this.rooms.push(room);
+    } else {
+      console.log('ROOMBAN: Update error!');
+    }
+    return room.bans;
   }
   getRawRoomList(){
     return this.rooms;
