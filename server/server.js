@@ -19,36 +19,61 @@ io.on('connection', (socket)=>{
   console.log('New user connected');
 
   socket.on('join', (params, callback)=>{
-    console.log(params.roomid)
+
     if(params.roomid==""){
       return callback("RoomId is required!");
     }
+
     if(!users.getRoom(params.roomid)){
       users.addRoom(params.roomid);
-      console.log("New room added")
     }
+
     socket.join(params.roomid);
     var userName = `User${users.getUserList(params.roomid).length+1}`;
     users.removeUser(socket.id);
     users.removeRoomUser(params.roomid, socket.id);
+
     var room = users.getRoom(params.roomid);
+
     if(room.roomUsers.length>=2){
       return callback("Max room users!")
     }
+
     users.addUser(socket.id, userName, params.roomid);
     users.addRoomUser(params.roomid,socket.id);
+    var user = users.getUser(socket.id);
+    ///////////////TEST////////////////
     console.log(users.getRawUserList());
     console.log(users.getRawRoomList());
-    io.to(params.roomid).emit('downloadData', room.roomData);
+    ///////////////////////////////////
+
+    io.to(params.roomid).emit('updateRoom',
+      {
+        roomData : room.roomData,
+        lockedFlag: user.lockedFlag
+      }
+    );
+
+    socket.emit('getUserName', user.name);
   });
 
-  socket.on('createMapBan', (mapBan)=>{
-    io.emit('newMapBan', {
-      map: mapBan.map,
-      user: mapBan.user,
-      time: new Date()
+  socket.on('newRoomDataPackage', (roomData)=>{
+  //  console.log(roomData);
+    var user = users.getUser(socket.id);
+    users.updateRoomData(user.room, roomData);
+
+    io.to(user.room).emit('updateRoom',
+    {
+      roomData,
+      lockedFlag: !user.lockedFlag
     });
-  })
+  });
+
+  socket.on('unlockBan', ()=>{
+    var user = users.getUser(socket.id);
+    var lockedFlag = false;
+    socket.broadcast.to(user.room).emit('unlockBanUpdate', lockedFlag);
+  });
 
   socket.on('disconnect', ()=>{
     console.log('User Disconnected');
@@ -60,7 +85,6 @@ io.on('connection', (socket)=>{
         users.removeRoom(userRoom.roomid);
       }
     }
-
   });
 
 });

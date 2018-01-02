@@ -4,7 +4,7 @@ class Users{
     this.rooms = [];
   }
   addUser (id, name, room) {
-    var user = {id, name, room};
+    var user = {id, name, room, lockedFlag: false};
     this.users.push(user);
     return user;
   }
@@ -97,6 +97,21 @@ class Users{
         return room.roomid != roomid;
       });
     }
+  }
+  updateRoomData(roomid, newData){
+    var room = this.getRoom(roomid);
+    if(room){
+      this.rooms = this.rooms.filter((room)=>{
+        return room.roomid != roomid;
+      });
+      room.roomData = newData;
+      console.log('ROOM: Updated!')
+      this.rooms.push(room);
+    } else {
+      console.log('ROOM: Update error!');
+    }
+    return room.roomData;
+
   }
   getRawRoomList(){
     return this.rooms;

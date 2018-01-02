@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body{
   background-color: #374C5E;
   color: white;
@@ -26,4 +30,13 @@ body{
   background-color: black;
   z-index: 100;
   opacity: 0;
+}
+.top-bar{
+  background-color: #2E112D;
+  width: 100vw;
+}
+.top-bar p{
+  display: inline-block;
+  margin-right: 20px;
+  padding: 15px 5px 15px 5px;
 }
