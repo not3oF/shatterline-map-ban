@@ -39,9 +39,11 @@ class Users{
   getRawUserList(){
     return this.users;
   }
-  addRoom(roomid){
+  addRoom(roomid, gameStyle){
     var room = {
       roomid,
+      gameStyle,
+      vetoFinished: false,
       roomData: [
         '<div id="mirage" class="map" mapid="1"><span>Mirage</span><div class="overlay"></div></div>',
         '<div id="dust2" class="map" mapid="2"><span>Dust2</span><div class="overlay"></div></div>',
@@ -149,7 +151,21 @@ class Users{
     } else {
       console.log('ROOMBAN: Update error!');
     }
-    return room.bans;
+    return room;
+  }
+  updateVetoStatus(roomid, vetoStatus){
+    var room = this.getRoom(roomid);
+    if(room){
+      this.rooms = this.rooms.filter((room)=>{
+        return room.roomid != roomid;
+      });
+      room.vetoFinished = vetoStatus;
+      console.log('ROOM VETO: Updated!')
+      this.rooms.push(room);
+    } else {
+      console.log('ROOM VETO: Update error!');
+    }
+    return room;
   }
   getRawRoomList(){
     return this.rooms;

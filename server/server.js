@@ -25,7 +25,7 @@ io.on('connection', (socket)=>{
     }
 
     if(!users.getRoom(params.roomid)){
-      users.addRoom(params.roomid);
+      users.addRoom(params.roomid, Number.parseInt(params.gameStyle));
     }
 
     socket.join(params.roomid);
@@ -71,11 +71,10 @@ io.on('connection', (socket)=>{
 
   socket.on('updateBanList', (mapid)=>{
     var user = users.getUser(socket.id);
-    var bans = users.removeRoomBan(user.room, mapid);
-    console.log(bans.length);
-    if (bans.length==1){
-      var lastMap = bans[0];
-      io.to(user.room).emit('mapsChosen', lastMap);
+    var room = users.removeRoomBan(user.room, mapid);
+    if (room.bans.length==room.gameStyle){
+      var lastMaps = room.bans;
+      io.to(user.room).emit('mapsChosen', lastMaps);
     }
   })
 
@@ -83,6 +82,21 @@ io.on('connection', (socket)=>{
     var user = users.getUser(socket.id);
     var lockedFlag = false;
     socket.broadcast.to(user.room).emit('unlockBanUpdate', lockedFlag);
+  });
+
+  socket.on('vetoFinished', (vetoStatus)=>{
+    var user = users.getUser(socket.id);
+    var room = users.updateVetoStatus(user.room, vetoStatus);
+
+    console.log(room.vetoFinished);
+    io.to(user.room).emit('updateRoom',
+      {
+        roomData : room.roomData,
+        lockedFlag: user.lockedFlag,
+        vetoFinished: room.vetoFinished
+      }
+    );
+
   });
 
   socket.on('disconnect', ()=>{

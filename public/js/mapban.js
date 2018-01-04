@@ -1,7 +1,6 @@
 var socket = io();
 console.log("Laoded!");
 var lockedFlag;
-var chosenFinished = false;
 
 socket.on('connect', function(){
   console.log("Connected!");
@@ -43,7 +42,7 @@ socket.on('updateRoom', function(roomData){
   var mapBox = $('.map');
 
   mapBox.on('click', function(){
-    if(!chosenFinished){
+    if(!roomData.vetoFinished){
       if(lockedFlag){
 
       } else {
@@ -79,11 +78,18 @@ socket.on('unlockBanUpdate', function(lockedFlagUpdate){
   $('.overlay').css('opacity', 0)
 });
 
-socket.on('mapsChosen', function(lastMap){
-  $('#chosen-map').html(`Chosen map: ${lastMap.name}`)
+socket.on('mapsChosen', function(lastMaps){
+
+  var chosenMaps = $('#chosen-maps');
+  lastMaps.forEach(function(map){
+    chosenMaps.append($('<li></li>').text(map.name));
+  });
+
   $('.map').css('cursor', 'default')
   $('.overlay').css('opacity', 0)
-  chosenFinished = true;
+  console.log("VETO END!")
+
+  socket.emit('vetoFinished', true);
 })
 
 
