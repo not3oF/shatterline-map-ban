@@ -50,22 +50,26 @@ io.on('connection', (socket)=>{
     io.to(params.roomid).emit('updateRoom',
       {
         roomData : room.roomData,
-        lockedFlag: user.lockedFlag
+        lockedFlag: user.lockedFlag,
+        vetoFinished: room.vetoFinished
       }
     );
 
     socket.emit('getUserName', user.name);
+    socket.emit('getRoomGameStyle', room.gameStyle);
   });
 
   socket.on('newRoomDataPackage', (roomData)=>{
   //  console.log(roomData);
     var user = users.getUser(socket.id);
     users.updateRoomData(user.room, roomData);
+    var room = users.getRoom(user.room);
 
     io.to(user.room).emit('updateRoom',
     {
       roomData,
-      lockedFlag: !user.lockedFlag
+      lockedFlag: !user.lockedFlag,
+      vetoFinished: room.vetoFinished
     });
   });
 

@@ -5,7 +5,6 @@ var lockedFlag;
 socket.on('connect', function(){
   console.log("Connected!");
   var params = jQuery.deparam(window.location.search);
-  console.log(params);
   socket.emit('join', params, function(err){
     if(err){
       alert(err);
@@ -27,11 +26,15 @@ socket.on('getUserName', function(userName){
   $('#username').html(userName);
 });
 
+socket.on('getRoomGameStyle', function(gameStyle){
+  $('#game-style').html(`Best of ${gameStyle}`)
+});
+
 
 socket.on('updateRoom', function(roomData){
   //console.log(roomData.roomData)
   lockedFlag = roomData.lockedFlag;
-  console.log(lockedFlag);
+  console.log(`VETOFINISHED: ${roomData.vetoFinished}`);
   var mapsContainer = $('#maps');
   mapsContainer.html("");
   roomData.roomData.forEach(function(map){
