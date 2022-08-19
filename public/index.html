@@ -12,25 +12,19 @@
       <input type="button" id="genRoom" value="Generate room">
       <div class="game-style-select">
         <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo1" id="bo1" checked/>
+            <input type="radio" name="game-style" value="bo2" id="bo2"/>
             <div class="state p-primary-o">
                 <label>BO1</label>
             </div>
         </div>
         <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo2" id="bo2"/>
-            <div class="state p-primary-o">
-                <label>BO2</label>
-            </div>
-        </div>
-        <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo3" id="bo3"/>
+            <input type="radio" name="game-style" value="bo4" id="bo4"/>
             <div class="state p-primary-o">
                 <label>BO3</label>
             </div>
         </div>
         <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo5" id="bo5"/>
+            <input type="radio" name="game-style" value="bo6" id="bo6"/>
             <div class="state p-primary-o">
                 <label>BO5</label>
             </div>
@@ -63,10 +57,10 @@ if($('#bo1').is(':checked')) {
   gameStyle = 1;
 } else if ($('#bo2').is(':checked')){
   gameStyle = 2;
-} else if($('#bo3').is(':checked')){
-  gameStyle = 3;
-} else if($('#bo5').is(':checked')){
-  gameStyle = 5;
+} else if($('#bo4').is(':checked')){
+  gameStyle = 4;
+} else if($('#bo6').is(':checked')){
+  gameStyle = 6;
 }
 
   console.log(gameStyle);
