@@ -47,7 +47,7 @@ class Users{
       roomData: [
         '<div id="escort" class="map" mapid="1"><span>Escort</span><div class="overlay"></div></div>',
         '<div id="conquest" class="map" mapid="2"><span>Conquest</span><div class="overlay"></div></div>',
-        '<div id="domination" class="map" mapid="3"><span>Domination</span><div class="overlay"></div></div>',
+        '<div id="demolition" class="map" mapid="3"><span>Demolition (SND/PTB)</span><div class="overlay"></div></div>',
       ],
       bans: [{
         mapid: 1,
@@ -57,7 +57,7 @@ class Users{
         name: 'Conquest'
       },{
         mapid: 3,
-        name: 'Domination'
+        name: 'Demolition'
       },],
       roomUsers: []
     }
