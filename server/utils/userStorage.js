@@ -48,11 +48,6 @@ class Users{
         '<div id="escort" class="map" mapid="1"><span>Escort</span><div class="overlay"></div></div>',
         '<div id="conquest" class="map" mapid="2"><span>Conquest</span><div class="overlay"></div></div>',
         '<div id="domination" class="map" mapid="3"><span>Domination</span><div class="overlay"></div></div>',
-        '<div id="cqb" class="map" mapid="4"><span>CQB</span><div class="overlay"></div></div>',
-        '<div id="deathlab" class="map" mapid="5"><span>Deathlab</span><div class="overlay"></div></div>',
-        '<div id="nisida" class="map" mapid="6"><span>Nisida</span><div class="overlay"></div></div>',
-        '<div id="high-pick" class="map" mapid="7"><span>High Pick</span><div class="overlay"></div></div>',
-        '<div id="tba" class="map" mapid="8"><span>TBA Map</span><div class="overlay"></div></div>',
       ],
       bans: [{
         mapid: 1,
@@ -63,21 +58,6 @@ class Users{
       },{
         mapid: 3,
         name: 'Domination'
-      },{
-        mapid: 4,
-        name: 'CQB'
-      },{
-        mapid: 5,
-        name: 'Deathlab'
-      },{
-        mapid: 6,
-        name: 'Nisida'
-      },{
-        mapid: 7,
-        name: 'High Pick'
-      },{
-        mapid: 8,
-        name: 'TBA Map'
       },],
       roomUsers: []
     }
