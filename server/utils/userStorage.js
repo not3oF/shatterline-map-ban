@@ -45,19 +45,31 @@ class Users{
       gameStyle,
       vetoFinished: false,
       roomData: [
-        '<div id="escort" class="map" mapid="1"><span>Escort</span><div class="overlay"></div></div>',
-        '<div id="conquest" class="map" mapid="2"><span>Conquest</span><div class="overlay"></div></div>',
-        '<div id="demolition" class="map" mapid="3"><span>Demolition (SND/PTB)</span><div class="overlay"></div></div>',
+        '<div id="escort" class="map" mapid="1"><span>March (Escort)</span><div class="overlay"></div></div>',
+        '<div id="conquest" class="map" mapid="2"><span>Escape (Escort)</span><div class="overlay"></div></div>',
+        '<div id="demolition" class="map" mapid="3"><span>Old Town</span><div class="overlay"></div></div>',
+        '<div id="demolition" class="map" mapid="4"><span>CQB</span><div class="overlay"></div></div>',
+        '<div id="demolition" class="map" mapid="5"><span>Nisida</span><div class="overlay"></div></div>',
+        '<div id="demolition" class="map" mapid="6"><span>Death Lab</span><div class="overlay"></div></div>',
       ],
       bans: [{
         mapid: 1,
-        name: 'Escort'
+        name: 'March (Escort)'
       },{
         mapid: 2,
-        name: 'Conquest'
+        name: 'Escape (Escort)'
       },{
         mapid: 3,
-        name: 'Demolition'
+        name: 'Old Town'
+      },{
+        mapid: 4,
+        name: 'CQB'
+      },{
+        mapid: 5,
+        name: 'Nisida'
+      },{
+        mapid: 6,
+        name: 'Deathlab'
       },],
       roomUsers: []
     }
