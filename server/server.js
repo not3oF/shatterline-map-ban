@@ -5,7 +5,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 
 const publicPath = path.join(__dirname, '../public');
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3600;
 const {Users} = require('./utils/userStorage');
 
 var app = express();
@@ -119,5 +119,5 @@ io.on('connection', (socket)=>{
 
 
 server.listen(port, ()=>{
-  console.log('Server is running on the port', 3000);
+  console.log('Server is running on the port', 3600);
 });
