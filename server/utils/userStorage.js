@@ -45,31 +45,39 @@ class Users{
       gameStyle,
       vetoFinished: false,
       roomData: [
-        '<div id="escort" class="map" mapid="1"><span>March (Escort)</span><div class="overlay"></div></div>',
-        '<div id="conquest" class="map" mapid="2"><span>Escape (Escort)</span><div class="overlay"></div></div>',
-        '<div id="demolition" class="map" mapid="3"><span>Old Town</span><div class="overlay"></div></div>',
-        '<div id="demolition" class="map" mapid="4"><span>CQB</span><div class="overlay"></div></div>',
-        '<div id="demolition" class="map" mapid="5"><span>Nisida</span><div class="overlay"></div></div>',
-        '<div id="demolition" class="map" mapid="6"><span>Death Lab</span><div class="overlay"></div></div>',
+        '<div id="strix" class="map" mapid="1"><span>Strix</span><div class="overlay"></div></div>',
+        '<div id="ram" class="map" mapid="2"><span>Ram</span><div class="overlay"></div></div>',
+        '<div id="pill" class="map" mapid="3"><span>Pill</span><div class="overlay"></div></div>',
+        '<div id="orbit" class="map" mapid="4"><span>Orbit</span><div class="overlay"></div></div>',
+        '<div id="mongoose" class="map" mapid="5"><span>Mongoose</span><div class="overlay"></div></div>',
+        '<div id="malva" class="map" mapid="6"><span>Malva</span><div class="overlay"></div></div>',
+        '<div id="kite" class="map" mapid="7"><span>Kite</span><div class="overlay"></div></div>',
+        '<div id="brisa" class="map" mapid="8"><span>Brisa</span><div class="overlay"></div></div>',
       ],
       bans: [{
         mapid: 1,
-        name: 'March (Escort)'
+        name: 'Strix'
       },{
         mapid: 2,
-        name: 'Escape (Escort)'
+        name: 'Ram'
       },{
         mapid: 3,
-        name: 'Old Town'
+        name: 'Pill'
       },{
         mapid: 4,
-        name: 'CQB'
+        name: 'Orbit'
       },{
         mapid: 5,
-        name: 'Nisida'
+        name: 'Mongoose'
       },{
         mapid: 6,
-        name: 'Deathlab'
+        name: 'Malva'
+      },{
+        mapid: 7,
+        name: 'Kite'
+      },{
+        mapid: 8,
+        name: 'Brisa'
       },],
       roomUsers: []
     }

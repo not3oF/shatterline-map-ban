@@ -12,21 +12,9 @@
       <input type="button" id="genRoom" value="Generate room">
       <div class="game-style-select">
         <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo1" id="bo1" checked/>
+            <input type="radio" name="game-style" value="bo4" id="bo4" checked/>
             <div class="state p-primary-o">
-                <label>BO1</label>
-            </div>
-        </div>
-        <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo3" id="bo3"/>
-            <div class="state p-primary-o">
-                <label>BO3</label>
-            </div>
-        </div>
-        <div class="pretty p-default p-curve">
-            <input type="radio" name="game-style" value="bo5" id="bo5"/>
-            <div class="state p-primary-o">
-                <label>BO5</label>
+                <label>Standard Operative Ban</label>
             </div>
         </div>
       </div>
@@ -53,12 +41,8 @@ $('#genRoom').on('click', function(){
 
 var gameStyle;
 
-if($('#bo1').is(':checked')) {
-  gameStyle = 1;
-} else if($('#bo3').is(':checked')){
-  gameStyle = 3;
-} else if($('#bo5').is(':checked')){
-  gameStyle = 5;
+if($('#bo4').is(':checked')) {
+  gameStyle = 4;
 }
 
   console.log(gameStyle);
