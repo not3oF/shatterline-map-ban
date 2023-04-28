@@ -5,7 +5,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 
 const publicPath = path.join(__dirname, '../public');
-const port = process.env.PORT || 3600;
+const port = process.env.PORT || 443 && 8443;
 const {Users} = require('./utils/userStorage');
 
 var app = express();
